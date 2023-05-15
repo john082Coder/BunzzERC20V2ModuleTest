@@ -21,7 +21,7 @@ ERC20 a standard interface for fungible tokens. The following standard allows fo
 - github repo URL
     https://github.com/john082Coder/BunzzERC20V2ModuleTest
 - simple dapp URL
-    https://bunzz-erc-721-full-module-test.vercel.app/
+    https://bunzz-erc-20-v2-module-test.vercel.app/
 
 
 ---
