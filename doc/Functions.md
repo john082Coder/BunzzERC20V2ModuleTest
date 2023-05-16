@@ -1,60 +1,37 @@
 # WRITE(main)
 
 ## transferFrom
-Transfer a particular tokenId from the token owner to an certai address if the caller have the permision to transfer it
+Transfer a particular amount of tokens from the tokens owner to an certai address if the caller have the permision to transfer it
 
 |Name|Type|Description|Example|Default|
 |--- |---|---|---|---|
-|from|address|The token sender||N/A|
-|to|address|The token receiver||N/A|
-|tokenId|uint256|The id of the token that will be transfered||N/A|
+|sender|address|The sender of tokens||N/A|
+|recipient|address|The tokens receiver||N/A|
+|amount|uint256|The amount of tokens that will be sent||N/A|
 
-
-## safeTransferFrom
-Safely transfers the ownership of a given token ID
+## transfer
+Transfer a particular amount of tokens from caller balance to another user balance
 
 |Name|Type|Description|Example|Default|
 |--- |---|---|---|---|
-|from|address|The token sender||N/A|
-|to|address|The token receiver||N/A|
-|tokenId|uint256|The id of the token that will be sent||N/A|
-|_data|bytes|Optional data field||N/A|
-
-## safeTransferFrom
-Safely transfers the ownership of a given token ID
-
-|Name|Type|Description|
-|--- |---|---|
-|from|address|The address of the token sender|
-|to|address|The id of the token that will be receiver|
-|tokenId|uint256|The id of the token that will be sents|
+|recipient|address|The tokens receiver||N/A|
+|amount|uint256|The amount of tokens that will be sent||N/A|
 
 ## approve
 Gives an certain address permision to move tokens for the token owner
 
 |Name|Type|Description|
 |--- |---|---|
-|to|address|Account to approve to spend caller balance|
-|tokenId|uint256|Token id that will be approved to be user by other account|
-
-
-## setApprovalForAll
-
-Sets or unsets the approval of a given operator An operator is allowed to transfer all tokens of the sender on their behalf.
-
-|Name|Type|Description|
-|--- |---|---|
-|operator|address|The account that will be the balance operator|
-|approved|bool|Approval status|
-
+|spender|address|The operator of the tokens balance|
+|amount|uint256|The amount of the tokens the spender is approved to spend|
 
 ## mint
-Can only be called by the contract owner. Needs to provide the address that will receive the NFT. Needs to provide a token ID for metadata
+Mint new tokens for a user
 
 |Name|Type|Description|
 |--- |---|---|
 |to|address|The tokens receiver|
-|_tokenId|uint256|New token id that will be minted|
+|amount|uint256|The amount of tokens that will be minted|
 
 ## revokeRole
 Revokes role from account
@@ -80,6 +57,46 @@ Grants a role to account
 |role|bytes32|The role id|
 |account|address|The account that will be granted the role|
 
+## pause
+Pause all tokens operations
+
+No arguments
+
+## unpause
+Unpause all tokens operations
+
+No arguments
+
+## increaseAllowance
+Increase an certain address permision to move tokens for the token owner
+
+|Name|Type|Description|
+|--- |---|---|
+|spender|address|The tokens spender|
+|addedValue|uint256|The value that will be added to the spender approval|
+
+## decreaseAllowance
+Decrease an certain address permision to move tokens for the token owner
+
+|Name|Type|Description|
+|--- |---|---|
+|spender|address|The spender of the tokens|
+|addedValue|uint256|The amount that will be substracted from the spender permission|
+
+## burn
+Burn a number of tokens from existence
+
+|Name|Type|Description|
+|--- |---|---|
+|amount|uint256|The amount of tokens to be burned|
+
+## burnFrom
+Burn a number of tokens from a user that allowed the caller to do so
+
+|Name|Type|Description|
+|--- |---|---|
+|account|address|The account from where you want to burn the tokens|
+|amount|uint256|The amount of tokens to be burned|
 
 # READ(main)
 
@@ -88,7 +105,6 @@ Grants a role to account
 Returns the amount of tokens in existence
 
 No arguments
-
 
 ## supportsInterface
 Returns a boolean that tells us if the contract supports royalties
@@ -102,7 +118,7 @@ Returns the token amount owned by an address
 
 |Name|Type|Description|
 |--- |---|---|
-|owner|address|The account which you want to check the balance|
+|account|address|The account which you want to check the balance|
 
 
 ## ownerOf
@@ -113,36 +129,14 @@ Returns the owner of the NFT specified by tokenId
 |tokenId|uint256|The id of the token you want to check its owner of|
 
 ## name
-Retrieves collection name
+Returns the token name
 
 No arguments
 
 ## symbol
-Retrieves collection name
+Returns the token symbol
 
 No arguments
-
-## tokenURI
-Returns the uri of the metadata
-
-|Name|Type|Description|
-|--- |---|---|
-|tokenId|uint256|The id of the token|
-
-## tokenOfOwnerByIndex
-Returns all the tokens owned by an address and given index
-
-|Name|Type|Description|
-|--- |---|---|
-|owner|address|The token owner|
-|index|uint256|The index of the token|
-
-## tokenByIndex
-Return the token index based on user balance
-
-|Name|Type|Description|
-|--- |---|---|
-|index|uint256|The index of the token|
 
 
 ## getApproved
@@ -152,13 +146,6 @@ Gets the approved address for a token ID, or zero if no address set Reverts if t
 |--- |---|---|
 |tokenId|uint256|The token id you will retrieves the approvals|
 
-## isApprovedForAll
-Tells whether an operator is approved by a given owner.
-
-|Name|Type|Description|
-|--- |---|---|
-|owner|address|The address of the tokens owner|
-|operator|uint256|The account that will get the rights to operate over owner balance|
 
 ## hasRole
 Returns true if account has been granted role
@@ -175,6 +162,21 @@ Returns the admin role that controls roles
 |--- |---|---|
 |role|bytes32|The role id|
 
+## getRoleMemberCount
+Returns the number of accounts that have role
+
+|Name|Type|Description|
+|--- |---|---|
+|role|bytes32|The role id|
+
+## getRoleMember
+Returns one of the accounts that have a role
+
+|Name|Type|Description|
+|--- |---|---|
+|role|bytes32|The role id|
+|index|uint256|The index of the role member|
+
 ## MINTER_ROLE
 The role for minters
 
@@ -184,3 +186,26 @@ No arguments
 The starting admin for all roles
 
 No arguments
+
+## paused
+Returns the paused status of the contract
+
+No arguments
+
+## PAUSE_ROLE
+The role for pausers
+
+No arguments
+
+## decimals
+Returns the decimals of the token
+
+No arguments
+
+## allowance
+Returns the remaining number of tokens that spender will be allowed to spend on behalf of owner through transferFrom
+
+|Name|Type|Description|
+|--- |---|---|
+|owner|address|The tokens owner|
+|spender|address|The tokens spender|

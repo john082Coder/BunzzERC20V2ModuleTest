@@ -1,1 +1,1 @@
-mint, tokenURI
+mint, pause, unpause
