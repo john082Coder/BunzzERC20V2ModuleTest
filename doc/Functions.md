@@ -1,24 +1,24 @@
 # WRITE(main)
 
 ## transferFrom
-Transfer a particular amount of tokens from the tokens owner to an certai address if the caller have the permision to transfer it
+Transfer a particular amount of tokens from the tokens owner to an certai address if the caller have the permission to transfer it
 
-|Name|Type|Description|Example|Default|
-|--- |---|---|---|---|
-|sender|address|The sender of tokens||N/A|
-|recipient|address|The tokens receiver||N/A|
-|amount|uint256|The amount of tokens that will be sent||N/A|
+|Name|Type|Description|
+|--- |---|---|
+|sender|address|The address of the user who is sending tokens|
+|recipient|address|The address of the user who will receive tokens|
+|amount|uint256|The amount of tokens that will be sent|
 
 ## transfer
 Transfer a particular amount of tokens from caller balance to another user balance
 
-|Name|Type|Description|Example|Default|
-|--- |---|---|---|---|
-|recipient|address|The tokens receiver||N/A|
-|amount|uint256|The amount of tokens that will be sent||N/A|
+|Name|Type|Description|
+|--- |---|---|
+|recipient|address|The address of the user who will receive tokens|
+|amount|uint256|The amount of tokens that will be sent|
 
 ## approve
-Gives an certain address permision to move tokens for the token owner
+Gives an certain address permission to move tokens for the token owner
 
 |Name|Type|Description|
 |--- |---|---|
@@ -68,7 +68,7 @@ Unpause all tokens operations
 No arguments
 
 ## increaseAllowance
-Increase an certain address permision to move tokens for the token owner
+Increase an certain address permission to move tokens for the token owner
 
 |Name|Type|Description|
 |--- |---|---|
@@ -76,7 +76,7 @@ Increase an certain address permision to move tokens for the token owner
 |addedValue|uint256|The value that will be added to the spender approval|
 
 ## decreaseAllowance
-Decrease an certain address permision to move tokens for the token owner
+Decrease an certain address permission to move tokens for the token owner
 
 |Name|Type|Description|
 |--- |---|---|
